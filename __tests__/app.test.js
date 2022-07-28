@@ -11,12 +11,10 @@ describe('/crystals route', () => {
   it('returns all crystal data', async () => {
     const res = await request(app).get('/crystals');
     expect(res.body.length).toEqual(5);
-    expect.addSnapshotSerializer(
-      res.body[0].toEqual({
-        id: expect.any(String),
-        rare: expect.any(Boolean),
-      })
-    );
+    expect(res.body[0]).toMatchObject({
+      id: expect.any(String),
+      rare: expect.any(Boolean),
+    });
   });
   afterAll(() => {
     pool.end();
