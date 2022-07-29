@@ -8,7 +8,7 @@ describe('/crystals route', () => {
     return setup(pool);
   });
   it('returns all crystal data', async () => {
-    const res = await request(app).get('/');
+    const res = await request(app).get('/crystals');
     expect(res.body.length).toEqual(5);
     expect(res.body[0]).toMatchObject({
       id: expect.any(String),
@@ -16,7 +16,7 @@ describe('/crystals route', () => {
     });
   });
   it('returns one crystal detail', async () => {
-    const res = await request(app).get('/1');
+    const res = await request(app).get('/crystals/1');
     expect(res.body).toEqual({
       id: '1',
       name: 'Tigers Eye',
